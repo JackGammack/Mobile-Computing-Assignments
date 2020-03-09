@@ -9,11 +9,26 @@
 import UIKit
 
 class GalleryViewController: UIViewController {
-
+    var Index = -1
+    private let reuseIdentifier = "animalCollectionCell"
+    var galleryItems = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        accessPlist()
+        for item in galleryItems{
+            print(item)
+        }
+    }
+    
+    private func accessPlist() {
+        let inputFile = Bundle.main.path(forResource: "GalleryItem", ofType: "plist")
+        let inputDataArray = NSArray(contentsOfFile: inputFile!)
+        for input in inputDataArray as! [Dictionary<String, String>] {
+            for (key, value) in input {
+                galleryItems.append("\(key): \(value)")
+            }
+        }
     }
     
 

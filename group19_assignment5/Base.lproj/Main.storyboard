@@ -176,10 +176,6 @@
                                             </subviews>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="375" height="246"/>
-                                        <connections>
-                                            <outlet property="captionlabel" destination="RSZ-DW-uPF" id="1Vt-dq-QTB"/>
-                                            <outlet property="galleryimage" destination="WOP-XJ-14Q" id="kmE-Q9-zzD"/>
-                                        </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wyA-xf-J2o" customClass="footerCollectionViewCell" customModule="group19_assignment5" customModuleProvider="target">
                                         <rect key="frame" x="19.5" y="366" width="375" height="100"/>
@@ -199,9 +195,6 @@
                                             </subviews>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="375" height="100"/>
-                                        <connections>
-                                            <outlet property="footerlabel" destination="qga-dn-Hma" id="wk7-VJ-WOw"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
