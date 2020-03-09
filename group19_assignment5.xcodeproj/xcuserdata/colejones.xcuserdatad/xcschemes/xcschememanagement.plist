@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<array>
+<dict>
+	<key>SchemeUserState</key>
 	<dict>
-		<key>QQQ</key>
-		<string>HUH</string>
-		<key>ZZZ</key>
-		<string>HUHZ</string>
-		<key>Wow</key>
-		<string>HUHHH</string>
+		<key>group19_assignment5.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
 	</dict>
-</array>
+</dict>
 </plist>

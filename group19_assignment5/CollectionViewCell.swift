@@ -10,4 +10,6 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var captionlabel: UILabel!
+    @IBOutlet weak var galleryimage: UIImageView!
 }
