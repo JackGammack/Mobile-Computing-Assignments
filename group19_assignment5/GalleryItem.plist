@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<array>
+<dict>
+	<key>Great White Shark</key>
 	<dict>
-		<key>Shark3</key>
+		<key>Great White Shark1</key>
 		<string>Long Shark</string>
-		<key>Shark2</key>
+		<key>Great White Shark2</key>
 		<string>Short Shark</string>
-		<key>Shark1</key>
+		<key>Great White Shark3</key>
 		<string>Big Shark</string>
 	</dict>
+	<key>Common Cuttlefish</key>
 	<dict>
 		<key>Cuttlefish3</key>
 		<string>Long Cuttlefish</string>
@@ -18,5 +20,5 @@
 		<key>Cuttlefish1</key>
 		<string>Big Cuttlefish</string>
 	</dict>
-</array>
+</dict>
 </plist>

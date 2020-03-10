@@ -1,60 +1,56 @@
 //
-//  GalleryViewController.swift
-//  group19_assignment5
+//  AnimalGalleryViewController.swift
+//  group15_assignment5
 //
-//  Created by Cole Jones on 3/9/20.
-//  Copyright © 2020 group19. All rights reserved.
+//  Created by Allan Clarke on 3/2/20.
 //
 
+import Foundation
 import UIKit
-class AnimalGalleryHeader: UICollectionReusableView
-{
-    @IBOutlet weak var header: UILabel!
+
+class GalleryHeader: UICollectionReusableView{
+    @IBOutlet weak var headerLabel: UILabel!
     
 }
 
-class AnimalGalleryfooter: UICollectionReusableView
-{
-    @IBOutlet weak var footer: UILabel!
+class GalleryFooter:UICollectionReusableView{
+    @IBOutlet weak var footerLabel: UILabel!
     
 }
 
-
-
-class GalleryViewController : UIViewController {
+class GalleryViewController : UICollectionViewController
+{
     
-    var Index = -1
-    var galleryItems = [String]()
+    var animal:Animal?
+    var gallery: Dictionary<String, String>?
     
-    var cAnimal:Animal?
-    var cGallery: Dictionary<String, String>?
-    
-    
-    override func viewDidLoad() {
-        print(cAnimal!.name)
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        accessPlist()
-        for item in galleryItems{
-            print(item)
-        }
+            
+        let plistGallery = Bundle.main.path(forResource: "GalleryItem", ofType: "plist")
+        let galleryNSDict = NSDictionary(contentsOfFile: plistGallery!)
+        let galleryDict = galleryNSDict as? Dictionary<String, Dictionary<String, String>>
         
+        let currentKey = animal!.name
+        gallery = galleryDict![currentKey]
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView
     {
         switch kind
         {
             case UICollectionView.elementKindSectionHeader:
-                if let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as? AnimalGalleryHeader
+                if let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? GalleryHeader
                 {
-                    header.header.text = cAnimal!.name + " pictures"
+                    header.headerLabel.text = animal!.name
                     return header
                 }
             
             case UICollectionView.elementKindSectionFooter:
-                if let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FooterView", for: indexPath) as? AnimalGalleryfooter
+                if let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "footer", for: indexPath) as? GalleryFooter
                 {
-                    footer.footer.text = "End of " + cAnimal!.name + " pictures"
+                    footer.footerLabel.text = "End of " + animal!.name
                     return footer
                 }
             
@@ -64,27 +60,29 @@ class GalleryViewController : UIViewController {
         
         return UICollectionReusableView()
     }
-    
-    private func accessPlist() {
-        print(cAnimal!)
-        let inputFile = Bundle.main.path(forResource: "GalleryItem", ofType: "plist")
-        let inputDataArray = NSArray(contentsOfFile: inputFile!)
-        for input in inputDataArray as! [Dictionary<String, String>] {
-            for (key, value) in input {
-                galleryItems.append("\(key): \(value)")
-            }
-        }
+
+    override func numberOfSections(in collectionView: UICollectionView) -> Int
+    {
+        
+        return 1
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        return gallery!.count
+        
     }
-    */
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+     {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
+        
 
+        let currentKey = animal!.name + "\(indexPath.row+1)"
+        
+        cell.animaLabel.text = gallery![currentKey]
+        cell.animalimage.image = UIImage(named: currentKey)
+        return cell
+    }
 }
+

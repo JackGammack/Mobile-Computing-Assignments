@@ -76,7 +76,7 @@ class AnimalsTableViewController: UITableViewController {
                 let sentAnimal = animals[indexPath.row / 2]
                 if (galleryCollectionViewController != nil)
                 {
-                     galleryCollectionViewController!.cAnimal = sentAnimal
+                     galleryCollectionViewController!.animal = sentAnimal
                 }
             }
         }
