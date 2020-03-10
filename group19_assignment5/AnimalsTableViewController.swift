@@ -10,7 +10,6 @@ import UIKit
 
 class NameTableViewCell: UITableViewCell{
     @IBOutlet weak var AnimalImage: UIImageView!
-
     @IBOutlet weak var NameLabel: UILabel!
 }
 

@@ -2,23 +2,41 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Takhi</key>
+	<dict>
+		<key>Takhi1</key>
+		<string>Spiky hair</string>
+		<key>Takhi2</key>
+		<string>What&apos;re you lookin at</string>
+		<key>Takhi3</key>
+		<string>Baby Takhi</string>
+	</dict>
+	<key>Asian Elephant</key>
+	<dict>
+		<key>Asian Elephant1</key>
+		<string>Pack of Elephants</string>
+		<key>Asian Elephant2</key>
+		<string>Old Elephant</string>
+		<key>Asian Elephant3</key>
+		<string>Happy Elephant</string>
+	</dict>
 	<key>Great White Shark</key>
 	<dict>
 		<key>Great White Shark1</key>
-		<string>Long Shark</string>
+		<string>Scary shark</string>
 		<key>Great White Shark2</key>
-		<string>Short Shark</string>
+		<string>Fake or Real?</string>
 		<key>Great White Shark3</key>
-		<string>Big Shark</string>
+		<string>Long shark</string>
 	</dict>
 	<key>Common Cuttlefish</key>
 	<dict>
-		<key>Cuttlefish3</key>
-		<string>Long Cuttlefish</string>
-		<key>Cuttlefish2</key>
-		<string>Short Cuttlefish</string>
-		<key>Cuttlefish1</key>
-		<string>Big Cuttlefish</string>
+		<key>Common Cuttlefish3</key>
+		<string>Ground fish</string>
+		<key>Common Cuttlefish2</key>
+		<string>Colorful</string>
+		<key>Common Cuttlefish1</key>
+		<string>Alien looking thing</string>
 	</dict>
 </dict>
 </plist>

@@ -16,7 +16,6 @@
 		6F9AA6F72410B9B30023A441 /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9AA6F62410B9B30023A441 /* Animal.swift */; };
 		6F9AA6F924115F860023A441 /* AnimalsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9AA6F824115F860023A441 /* AnimalsTableViewController.swift */; };
 		8E55C33824118A1000273A10 /* GalleryItem.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E55C33724118A1000273A10 /* GalleryItem.plist */; };
-		8E55C33A24118D9F00273A10 /* CollectionReusableViewHeaderAndFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E55C33924118D9F00273A10 /* CollectionReusableViewHeaderAndFooter.swift */; };
 		8E55C33C24118F0F00273A10 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E55C33B24118F0F00273A10 /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +31,6 @@
 		6F9AA6F62410B9B30023A441 /* Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
 		6F9AA6F824115F860023A441 /* AnimalsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalsTableViewController.swift; sourceTree = "<group>"; };
 		8E55C33724118A1000273A10 /* GalleryItem.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GalleryItem.plist; sourceTree = "<group>"; };
-		8E55C33924118D9F00273A10 /* CollectionReusableViewHeaderAndFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionReusableViewHeaderAndFooter.swift; sourceTree = "<group>"; };
 		8E55C33B24118F0F00273A10 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,7 +68,6 @@
 				6F9AA6E42410B4BF0023A441 /* SceneDelegate.swift */,
 				6F9AA6E82410B4BF0023A441 /* Main.storyboard */,
 				105CCE7B2416A8DF0078CBB5 /* GalleryViewController.swift */,
-				8E55C33924118D9F00273A10 /* CollectionReusableViewHeaderAndFooter.swift */,
 				8E55C33B24118F0F00273A10 /* CollectionViewCell.swift */,
 				6F9AA6F62410B9B30023A441 /* Animal.swift */,
 				6F9AA6F824115F860023A441 /* AnimalsTableViewController.swift */,
@@ -159,7 +156,6 @@
 				6F9AA6E32410B4BF0023A441 /* AppDelegate.swift in Sources */,
 				8E55C33C24118F0F00273A10 /* CollectionViewCell.swift in Sources */,
 				6F9AA6F924115F860023A441 /* AnimalsTableViewController.swift in Sources */,
-				8E55C33A24118D9F00273A10 /* CollectionReusableViewHeaderAndFooter.swift in Sources */,
 				6F9AA6E52410B4BF0023A441 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

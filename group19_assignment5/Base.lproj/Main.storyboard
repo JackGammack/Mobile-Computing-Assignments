@@ -128,26 +128,39 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="adW-yb-a7i" customClass="CollectionViewCell" customModule="group19_assignment5" customModuleProvider="target">
-                                <rect key="frame" x="79" y="50" width="256" height="50"/>
+                                <rect key="frame" x="32" y="50" width="350" height="350"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7Op-u3-XMH" customClass="CollectionViewCell" customModule="group19_assignment5" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="256" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kw4-SU-ohq">
-                                            <rect key="frame" x="15" y="8" width="60" height="34"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8io-Xl-Pwj">
-                                            <rect key="frame" x="122" y="15" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8io-Xl-Pwj">
+                                            <rect key="frame" x="8" y="8" width="334" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kw4-SU-ohq">
+                                            <rect key="frame" x="8" y="37" width="334" height="305"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="334" id="8ZY-Lb-erh"/>
+                                                <constraint firstAttribute="height" constant="305" id="iVS-X2-oGc"/>
+                                                <constraint firstAttribute="width" secondItem="Kw4-SU-ohq" secondAttribute="height" multiplier="334:305" id="wUD-Uu-82q"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Kw4-SU-ohq" firstAttribute="top" secondItem="8io-Xl-Pwj" secondAttribute="bottom" constant="8" id="2yB-gN-k8f"/>
+                                        <constraint firstAttribute="trailing" secondItem="Kw4-SU-ohq" secondAttribute="trailing" constant="8" id="LYa-h2-Yn2"/>
+                                        <constraint firstAttribute="bottom" secondItem="Kw4-SU-ohq" secondAttribute="bottom" constant="8" id="Pa3-b7-7W8"/>
+                                        <constraint firstItem="Kw4-SU-ohq" firstAttribute="leading" secondItem="7Op-u3-XMH" secondAttribute="leading" constant="8" id="T5P-bW-51i"/>
+                                        <constraint firstAttribute="trailing" secondItem="8io-Xl-Pwj" secondAttribute="trailing" constant="8" id="b5Q-Yw-zPt"/>
+                                        <constraint firstItem="8io-Xl-Pwj" firstAttribute="top" secondItem="7Op-u3-XMH" secondAttribute="top" constant="8" id="bNZ-qe-RO0"/>
+                                        <constraint firstItem="Kw4-SU-ohq" firstAttribute="top" secondItem="8io-Xl-Pwj" secondAttribute="bottom" constant="8" id="lFL-r1-IBW"/>
+                                        <constraint firstItem="8io-Xl-Pwj" firstAttribute="leading" secondItem="7Op-u3-XMH" secondAttribute="leading" constant="8" id="vgk-r5-jI2"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="256" height="50"/>
+                                <size key="customSize" width="350" height="350"/>
                                 <connections>
                                     <outlet property="animaLabel" destination="8io-Xl-Pwj" id="458-M4-XTx"/>
                                     <outlet property="animalimage" destination="Kw4-SU-ohq" id="h0A-TM-GEN"/>
@@ -166,12 +179,13 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <outlet property="headerLabel" destination="iQo-Xv-yix" id="Ucr-PG-acO"/>
                             </connections>
                         </collectionReusableView>
                         <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="footer" id="ATn-RZ-fwX" userLabel="Animal Gallery Footer" customClass="GalleryFooter" customModule="group19_assignment5" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="100" width="414" height="50"/>
+                            <rect key="frame" x="0.0" y="400" width="414" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Footer Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYT-UO-1B0">
@@ -182,6 +196,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <outlet property="footerLabel" destination="lYT-UO-1B0" id="oE3-dg-4S8"/>
                             </connections>
