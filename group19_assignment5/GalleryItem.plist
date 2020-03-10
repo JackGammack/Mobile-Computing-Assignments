@@ -3,12 +3,20 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>QQQ</key>
-		<string>HUH</string>
-		<key>ZZZ</key>
-		<string>HUHZ</string>
-		<key>Wow</key>
-		<string>HUHHH</string>
+		<key>Shark3</key>
+		<string>Long Shark</string>
+		<key>Shark2</key>
+		<string>Short Shark</string>
+		<key>Shark1</key>
+		<string>Big Shark</string>
+	</dict>
+	<dict>
+		<key>Cuttlefish3</key>
+		<string>Long Cuttlefish</string>
+		<key>Cuttlefish2</key>
+		<string>Short Cuttlefish</string>
+		<key>Cuttlefish1</key>
+		<string>Big Cuttlefish</string>
 	</dict>
 </array>
 </plist>

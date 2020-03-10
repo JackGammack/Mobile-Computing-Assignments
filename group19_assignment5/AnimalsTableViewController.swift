@@ -9,8 +9,8 @@
 import UIKit
 
 class NameTableViewCell: UITableViewCell{
-    
     @IBOutlet weak var AnimalImage: UIImageView!
+
     @IBOutlet weak var NameLabel: UILabel!
 }
 
@@ -62,5 +62,25 @@ class AnimalsTableViewController: UITableViewController {
             return info_cell
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        // ship the current clicked cell's animal object off to the new VC
+        if segue.destination is GalleryViewController
+        {
+            let galleryCollectionViewController = segue.destination as? GalleryViewController
+            
+            if let selectedCell = sender as? NameTableViewCell
+            {
+                let indexPath = tableView.indexPath(for: selectedCell)!
+                let sentAnimal = animals[indexPath.row / 2]
+                if (galleryCollectionViewController != nil)
+                {
+                     galleryCollectionViewController!.cAnimal = sentAnimal
+                }
+            }
+        }
+    }
+    
 
 }

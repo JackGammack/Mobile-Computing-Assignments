@@ -8,12 +8,16 @@
 
 import UIKit
 
-class GalleryViewController: UIViewController {
+class GalleryViewController : UIViewController {
     var Index = -1
-    private let reuseIdentifier = "animalCollectionCell"
     var galleryItems = [String]()
     
+    var cAnimal:Animal?
+    var cGallery: Dictionary<String, String>?
+    
+    
     override func viewDidLoad() {
+        print(cAnimal!.name)
         super.viewDidLoad()
         accessPlist()
         for item in galleryItems{
@@ -22,6 +26,7 @@ class GalleryViewController: UIViewController {
     }
     
     private func accessPlist() {
+        print(cAnimal!)
         let inputFile = Bundle.main.path(forResource: "GalleryItem", ofType: "plist")
         let inputDataArray = NSArray(contentsOfFile: inputFile!)
         for input in inputDataArray as! [Dictionary<String, String>] {

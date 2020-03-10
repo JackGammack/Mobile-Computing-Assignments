@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NameCell" rowHeight="90" translatesAutoresizingMaskIntoConstraints="NO" id="dHW-Yb-GPI" customClass="NameTableViewCell" customModule="group19_assignment5" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NameCell" rowHeight="90" translatesAutoresizingMaskIntoConstraints="NO" id="dHW-Yb-GPI" customClass="NameTableViewCell" customModule="group19_assignment5" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dHW-Yb-GPI" translatesAutoresizingMaskIntoConstraints="NO" id="5Fa-gK-e51">
@@ -27,7 +27,7 @@
                                             <rect key="frame" x="20" y="0.0" width="92" height="90"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vlh-X5-u5P">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vlh-X5-u5P" customClass="NameLabel">
                                             <rect key="frame" x="120" y="35" width="274" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -37,8 +37,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="AnimalImage" destination="TFn-cq-7ig" id="K8i-7M-vU0"/>
-                                    <outlet property="NameLabel" destination="Vlh-X5-u5P" id="4E9-Bo-Seo"/>
+                                    <outlet property="AnimalImage" destination="TFn-cq-7ig" id="v6G-fm-JXR"/>
+                                    <outlet property="NameLabel" destination="Vlh-X5-u5P" id="tFP-dH-I5n"/>
                                     <segue destination="Qr5-yW-OYu" kind="show" id="S5F-Ja-zae"/>
                                 </connections>
                             </tableViewCell>
