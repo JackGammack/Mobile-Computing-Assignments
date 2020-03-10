@@ -7,8 +7,22 @@
 //
 
 import UIKit
+class AnimalGalleryHeader: UICollectionReusableView
+{
+    @IBOutlet weak var header: UILabel!
+    
+}
+
+class AnimalGalleryfooter: UICollectionReusableView
+{
+    @IBOutlet weak var footer: UILabel!
+    
+}
+
+
 
 class GalleryViewController : UIViewController {
+    
     var Index = -1
     var galleryItems = [String]()
     
@@ -23,6 +37,32 @@ class GalleryViewController : UIViewController {
         for item in galleryItems{
             print(item)
         }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView
+    {
+        switch kind
+        {
+            case UICollectionView.elementKindSectionHeader:
+                if let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as? AnimalGalleryHeader
+                {
+                    header.header.text = cAnimal!.name + " pictures"
+                    return header
+                }
+            
+            case UICollectionView.elementKindSectionFooter:
+                if let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FooterView", for: indexPath) as? AnimalGalleryfooter
+                {
+                    footer.footer.text = "End of " + cAnimal!.name + " pictures"
+                    return footer
+                }
+            
+            default:
+                return UICollectionReusableView()
+        }
+        
+        return UICollectionReusableView()
     }
     
     private func accessPlist() {
