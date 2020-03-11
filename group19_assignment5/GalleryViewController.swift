@@ -1,10 +1,3 @@
-//
-//  AnimalGalleryViewController.swift
-//  group15_assignment5
-//
-//  Created by Allan Clarke on 3/2/20.
-//
-
 import Foundation
 import UIKit
 
