@@ -16,6 +16,7 @@
 		6F2A638A2437B31200BBF66A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F2A63882437B31200BBF66A /* LaunchScreen.storyboard */; };
 		6F2A63982438E71100BBF66A /* AddAdventurerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2A63972438E71100BBF66A /* AddAdventurerViewController.swift */; };
 		6F2A639A2438F39800BBF66A /* QuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2A63992438F39800BBF66A /* QuestViewController.swift */; };
+		8E5EA71F244247560009585F /* character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5EA71E244247560009585F /* character.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		6F2A638B2437B31200BBF66A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F2A63972438E71100BBF66A /* AddAdventurerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAdventurerViewController.swift; sourceTree = "<group>"; };
 		6F2A63992438F39800BBF66A /* QuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestViewController.swift; sourceTree = "<group>"; };
+		8E5EA71E244247560009585F /* character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = character.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		6F2A63792437B30D00BBF66A /* group19_assignment6 */ = {
 			isa = PBXGroup;
 			children = (
+				8E5EA71E244247560009585F /* character.swift */,
 				6F2A637A2437B30D00BBF66A /* AppDelegate.swift */,
 				6F2A637C2437B30D00BBF66A /* SceneDelegate.swift */,
 				6F2A637E2437B30D00BBF66A /* AdventurerViewController.swift */,
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F2A637F2437B30D00BBF66A /* AdventurerViewController.swift in Sources */,
+				8E5EA71F244247560009585F /* character.swift in Sources */,
 				6F2A63982438E71100BBF66A /* AddAdventurerViewController.swift in Sources */,
 				6F2A637B2437B30D00BBF66A /* AppDelegate.swift in Sources */,
 				6F2A63852437B30D00BBF66A /* group19_assignment6.xcdatamodeld in Sources */,

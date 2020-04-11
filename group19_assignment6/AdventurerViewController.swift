@@ -26,6 +26,10 @@ class AdventurerTableViewCell: UITableViewCell{
 class AdventurerViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    let characters = [character(name: "Cloud", profession : "SOLDIER", level : 0, currentHP: 0 ,  totalHP:0, attack:0 ), character(name: "Tifa", profession : "Bartender", level : 0, currentHP: 0 ,  totalHP:0, attack:0),
+                      character(name: "Yuffie", profession : "Thief", level : 0, currentHP: 0 ,  totalHP:0, attack:0)
+    ]
+    
     
     override func viewDidLoad() {
       super.viewDidLoad()
