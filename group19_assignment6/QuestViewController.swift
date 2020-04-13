@@ -14,17 +14,42 @@ class QuestViewController: UIViewController{
     @IBOutlet weak var QuestLog: UITextView!
     var adventurers: [NSManagedObject] = []
     
-    var characterIndex = 0
+    var characterIndex : Int?
        
-    var character : character? = nil
+    var character : NSManagedObject?
+    
+    var name: String = ""
+    var lvl: Int16 = 0
+    var atk: Float = 0
+    var currHP: Float = 0
+    
+    var questOver: Bool = false
+    var randomRange: Float = 0;
+    
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        print(characterIndex)
-        //MARK: -Fetching the data
+        
+        name = character!.value(forKeyPath: "name") as! String
+        lvl = character!.value(forKeyPath: "level") as! Int16
+        atk = character!.value(forKeyPath: "attack") as! Float
+        currHP = character!.value(forKeyPath: "currentHP") as! Float
+        
+        
+        NameLabel?.text = character!.value(forKeyPath: "name") as! String
+        LevelLabel?.text = String(character!.value(forKeyPath: "level") as! Int16)
+        ClassLabel?.text = character!.value(forKeyPath: "profession") as! String
+        //Formats the attack value to 2 decimal places
+        AttackLabel?.text = String(format: "%.2f",character!.value(forKeyPath: "attack") as! Float)
+        HPLabel?.text = String(character!.value(forKeyPath: "currentHP") as! Int) + "/" + String(character!.value(forKeyPath: "totalHP") as! Int)
+        //The portrait value is a String that is the name of the image
+        //For example "comic" or "bumblebee"
+        PortraitImage?.image = UIImage(named: character!.value(forKeyPath: "portrait") as! String)
+        
+        runQuest()
 
-        }
+    }
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
       
@@ -42,112 +67,61 @@ class QuestViewController: UIViewController{
         print("Could not fetch. \(error), \(error.userInfo)")
       }
     }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell: AdventurerTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AdventurerCell", for: indexPath) as! AdventurerTableViewCell
-        let adventurer: NSManagedObject = adventurers[indexPath.row]
-        cell.NameLabel?.text = adventurer.value(forKeyPath: "name") as? String
-        cell.LevelLabel?.text = String(adventurer.value(forKeyPath: "level") as! Int16)
-        cell.ClassLabel?.text = adventurer.value(forKeyPath: "profession") as? String
-        //Formats the attack value to 2 decimal places
-        cell.AttackLabel?.text = String(format: "%.2f",adventurer.value(forKeyPath: "attack") as! Float)
-        cell.HPLabel?.text = String(adventurer.value(forKeyPath: "currentHP") as! Int) + "/" + String(adventurer.value(forKeyPath: "totalHP") as! Int)
-        //The portrait value is a String that is the name of the image
-        //For example "comic" or "bumblebee"
-        cell.PortraitImage?.image = UIImage(named: adventurer.value(forKeyPath: "portrait") as! String)
-        
-        return cell
-  //MARK: - Questlog function
-        
-       
-
-        
-        func save( name: String, profession: String, level: Int, currentHP: Int, totalHP: Int, attack: Float, portrait: String ) {
-          
-          guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-            return
-          }
-          let managedContext =
-            appDelegate.persistentContainer.viewContext
-          let entity = NSEntityDescription.entity(forEntityName: "Adventurer",
-                                       in: managedContext)!
-          let adventurer = NSManagedObject(entity: entity,
-                                       insertInto: managedContext)
-          
-          adventurer.setValue(name, forKeyPath: "name")
-          adventurer.setValue(profession, forKeyPath: "profession")
-          adventurer.setValue(level, forKeyPath: "level")
-          adventurer.setValue(currentHP, forKeyPath: "currentHP")
-          adventurer.setValue(totalHP, forKeyPath: "totalHP")
-          adventurer.setValue(attack, forKeyPath: "attack")
-          adventurer.setValue(portrait, forKeyPath: "portrait")
-           
-            
-          QuestLog.text += "Beginning Quest"
-        
-          //  character1.adventurer()
-          //  monster.adventurer()
-            
-          /*
-           
-         if (monster.currentlHP == 0) {
-             QuestLog.text += "Enemy is deafeated!"
-             monster.adventure //spawn
-             QuestLog.text += "A new enemy appears!"
-             monsterdefeated.count = +1 //after defeat n of monster level goes up
-             }
-        elif (monster.currentlHP != 0)
-             
-             monster.currentHP = monster.currentHP - (character.attack + random.range)
-             QuestLog.text +=  "\(character.name) attacks for \(character.attack) damage..."
-        elif (adventurer.currentHP != 0{
-             //either attack or waiting
-             if wait:
-             QuestLog.text += "The monster is waiting..."
-             character.currentHP = character.currentHP - monster.attack
-             QuestLog.text +=  "The monster  attacks for \(monst.attack) damage..."
-        end
-        }
-        elif (adventurer.currentHP == 0{
-             end
-             }
-
-             */
-            
-            
-          do {
-            try managedContext.save()
-            adventurers.append(adventurer)
-          } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-          }
-        }
-        
-        
-        
-        
-        //UNCOMMENT THE NEXT SECTION TO POPULATE THE STATS ON THIS VIEW
-        //FIRST, UPDATE THE
-            // let adventurer: NSManagedObject = *INSERT HERE*
-        //LINE SO THAT THE adventurer VARIABLE COMES FROM THE ADVENTURER THAT WAS CLICKED ON ON THE PREVIOUS VIEW or something idk. Maybe look at save() function is AddAdventurerViewController for more useful functions
-        
-        /*
-        let adventurer: NSManagedObject = *INSERT HERE*
-        NameLabel?.text = adventurer.value(forKeyPath: "name") as? String
-        LevelLabel?.text = String(adventurer.value(forKeyPath: "level") as! Int16)
-        ClassLabel?.text = adventurer.value(forKeyPath: "profession") as? String
-        //Formats the attack value to 2 decimal places
-        AttackLabel?.text = String(format: "%.2f",adventurer.value(forKeyPath: "attack") as! Float)
-        HPLabel?.text = String(adventurer.value(forKeyPath: "currentHP") as! Int) + "/" + String(adventurer.value(forKeyPath: "totalHP") as! Int)
-        //The portrait value is a String that is the name of the image
-        //For example "comic" or "bumblebee"
-        PortraitImage?.image = UIImage(named: adventurer.value(forKeyPath: "portrait") as! String)
-        
-         */}
-    // implement stuff for the quest
+    //MARK: - QuestLog function
     
+    func runQuest(){
+        var monstersDefeated = 0;
+        QuestLog.text += "Beginning Quest...\n"
+        while( !questOver || currHP > 0 ){
+            var monsterHP = Float.random(in: 20 ..< 50)
+            QuestLog.text += "A new enemy appears!\n"
+            while( monsterHP > 0 && currHP > 0 ){
+                randomRange = Float.random(in: 1..<8)
+                let atkPoints = atk*randomRange
+                monsterHP -= atkPoints
+                QuestLog.text += "\(name) attacks for \(Int(atkPoints)) damage\n"
+                if( monsterHP <= 0 ){
+                    QuestLog.text += "Enemy is defeated!\n"
+                    monstersDefeated += 1
+                    print(monstersDefeated)
+                    if( monstersDefeated >= 5 ){
+                        QuestLog.text += "Level up!\n"
+                        lvl += 1
+                        LevelLabel?.text = String(lvl)
+                        monstersDefeated = 0;
+                    }
+                    break
+                }
+                let matkPoints = Float.random(in: 5..<15)
+                currHP -= matkPoints
+                QuestLog.text += "The monster attacks for \(Int(matkPoints)) damage\n"
+                if( currHP <= 0 ){
+                    currHP = 0
+                    QuestLog.text += "\(name) is defeated!\n"
+                    questOver = true
+                }
+                HPLabel?.text = String(format: "%.0f", currHP) + "/" + String(character!.value(forKeyPath: "totalHP") as! Int)
+            }
+        }
+        character!.setValue(lvl, forKeyPath: "level")
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+          return
+        }
+        let managedContext =
+          appDelegate.persistentContainer.viewContext
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    @IBAction func EndQuestButton(_ sender: Any) {
+        questOver = true
+    }
 }
+    
+
     
 
 

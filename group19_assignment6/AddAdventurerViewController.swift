@@ -63,7 +63,7 @@ class AddAdventurerViewController: UIViewController {
       adventurer.setValue(portrait, forKeyPath: "portrait")
       do {
         try managedContext.save()
-        adventurers.append(adventurer)
+        characters.append(adventurer)
       } catch let error as NSError {
         print("Could not save. \(error), \(error.userInfo)")
       }

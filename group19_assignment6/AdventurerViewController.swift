@@ -10,10 +10,7 @@ import UIKit
 import CoreData
 
 // Global Array to store the CoreData object of each Adventurer
-var adventurers: [NSManagedObject] = [];
-
-var cCharacter : character?;
-var cCharacterIndex : Int?;
+var characters: [NSManagedObject] = [];
 
 // Custom TableViewCell for each Adventurer
 class AdventurerTableViewCell: UITableViewCell{
@@ -29,10 +26,6 @@ class AdventurerTableViewCell: UITableViewCell{
 class AdventurerViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    let characters = [character(name: "Cloud", profession : "SOLDIER", level : 0, currentHP: 0 ,  totalHP:0, attack:0 ), character(name: "Tifa", profession : "Bartender", level : 0, currentHP: 0 ,  totalHP:0, attack:0),
-                      character(name: "Yuffie", profession : "Thief", level : 0, currentHP: 0 ,  totalHP:0, attack:0)
-    ]
-    
     
     override func viewDidLoad() {
       super.viewDidLoad()
@@ -53,7 +46,7 @@ class AdventurerViewController: UIViewController, UITableViewDataSource {
       let fetchRequest =
         NSFetchRequest<NSManagedObject>(entityName: "Adventurer")
       do {
-        adventurers = try managedContext.fetch(fetchRequest)
+        characters = try managedContext.fetch(fetchRequest)
       } catch let error as NSError {
         print("Could not fetch. \(error), \(error.userInfo)")
       }
@@ -67,7 +60,7 @@ class AdventurerViewController: UIViewController, UITableViewDataSource {
     
     // Number of rows in table is length of Adventurers array
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return adventurers.count
+      return characters.count
     }
     
     // Each cell accesses a different CoreData Object that represents an Advenurer
@@ -75,7 +68,7 @@ class AdventurerViewController: UIViewController, UITableViewDataSource {
     // Properties of the adventurer are accessed by doing property=adventurer.value(forKeyPath: "something")
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: AdventurerTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AdventurerCell", for: indexPath) as! AdventurerTableViewCell
-        let adventurer: NSManagedObject = adventurers[indexPath.row]
+        let adventurer: NSManagedObject = characters[indexPath.row]
       cell.NameLabel?.text = adventurer.value(forKeyPath: "name") as? String
       cell.LevelLabel?.text = String(adventurer.value(forKeyPath: "level") as! Int16)
       cell.ClassLabel?.text = adventurer.value(forKeyPath: "profession") as? String
@@ -86,20 +79,14 @@ class AdventurerViewController: UIViewController, UITableViewDataSource {
       //For example "comic" or "bumblebee"
       cell.PortraitImage?.image = UIImage(named: adventurer.value(forKeyPath: "portrait") as! String)
         
-      cCharacter = characters[indexPath.row]
-      print(cCharacter)
-      cCharacterIndex = indexPath.row
-      print(cCharacterIndex)
       return cell
     }
-    
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "questcontroller") {
             let vc = segue.destination as! QuestViewController
-            vc.character = cCharacter
-            vc.characterIndex = cCharacterIndex!
+            vc.characterIndex = tableView.indexPathForSelectedRow!.row
+            vc.character = characters[vc.characterIndex!]
         }
     }
     
@@ -113,7 +100,7 @@ class AdventurerViewController: UIViewController, UITableViewDataSource {
                 return
             }
             let managedContext = appDelegate.persistentContainer.viewContext
-            managedContext.delete(adventurers[indexPath.row])
+            managedContext.delete(characters[indexPath.row])
             do {
                 try managedContext.save() // <- remember to put this :)
             }
@@ -121,7 +108,7 @@ class AdventurerViewController: UIViewController, UITableViewDataSource {
                 fatalError()
             }
  
-            adventurers.remove(at: indexPath.row)
+            characters.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         }
     }
