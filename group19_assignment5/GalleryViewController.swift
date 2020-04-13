@@ -1,7 +1,17 @@
+//
+//  GalleryViewController.swift
+//  group19_assignment5
+//
+//  Created by Cole Jones on 3/9/20.
+//  Copyright © 2020 group19. All rights reserved.
+//
+
+
 import Foundation
 import UIKit
 
 class GalleryHeader: UICollectionReusableView{
+    
     @IBOutlet weak var headerLabel: UILabel!
     
 }
@@ -11,8 +21,7 @@ class GalleryFooter:UICollectionReusableView{
     
 }
 
-class GalleryViewController : UICollectionViewController
-{
+class GalleryViewController : UICollectionViewController {
     
     var animal:Animal?
     var gallery: Dictionary<String, String>?
@@ -54,20 +63,19 @@ class GalleryViewController : UICollectionViewController
         return UICollectionReusableView()
     }
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int
-    {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return 1
+        
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
-    {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return gallery!.count
         
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-     {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
         
 

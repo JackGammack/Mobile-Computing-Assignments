@@ -12,6 +12,9 @@ import CoreData
 // Global Array to store the CoreData object of each Adventurer
 var adventurers: [NSManagedObject] = [];
 
+var cCharacter : character?;
+var cCharacterIndex : Int?;
+
 // Custom TableViewCell for each Adventurer
 class AdventurerTableViewCell: UITableViewCell{
     @IBOutlet weak var NameLabel: UILabel!
@@ -56,6 +59,7 @@ class AdventurerViewController: UIViewController, UITableViewDataSource {
       }
     }
     
+    
     // Reloads the data in the TableView every time it is pulled up
     override func viewDidAppear(_ animated: Bool){
         self.tableView.reloadData()
@@ -81,7 +85,22 @@ class AdventurerViewController: UIViewController, UITableViewDataSource {
       //The portrait value is a String that is the name of the image
       //For example "comic" or "bumblebee"
       cell.PortraitImage?.image = UIImage(named: adventurer.value(forKeyPath: "portrait") as! String)
+        
+      cCharacter = characters[indexPath.row]
+      print(cCharacter)
+      cCharacterIndex = indexPath.row
+      print(cCharacterIndex)
       return cell
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "questcontroller") {
+            let vc = segue.destination as! QuestViewController
+            vc.character = cCharacter
+            vc.characterIndex = cCharacterIndex!
+        }
     }
     
     // This is the code for deleting rows from the TableView

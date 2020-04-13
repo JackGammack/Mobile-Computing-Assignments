@@ -13,10 +13,15 @@ class QuestViewController: UIViewController{
     
     @IBOutlet weak var QuestLog: UITextView!
     var adventurers: [NSManagedObject] = []
+    
+    var characterIndex = 0
+       
+    var character : character? = nil
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        print(characterIndex)
         //MARK: -Fetching the data
 
         }
