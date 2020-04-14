@@ -1,1 +1,1 @@
-For extra credit, we did Multiple Galleries, so each animal has its own gallery.
+For extra credit, we did Full Enemy Type
