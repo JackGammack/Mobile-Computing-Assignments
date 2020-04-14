@@ -126,6 +126,8 @@ class QuestViewController: UIViewController{
                           currHP = 0
                           QuestLog.text += "\(name) is defeated!\n"
                           questOver = true
+                          userTimer.invalidate()
+                          monsterTimer.invalidate()
                       }
                       HPLabel?.text = String(format: "%.0f", currHP) + "/" + String(character!.value(forKeyPath: "totalHP") as! Int)
         QuestLog.text += "\(currMonster.name) is waiting..."
