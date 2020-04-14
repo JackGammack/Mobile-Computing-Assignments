@@ -182,23 +182,23 @@ class QuestViewController: UIViewController{
     
     @IBAction func EndQuestButton(_ sender: Any) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-          return
+              return
+            }
+            let managedContext =
+              appDelegate.persistentContainer.viewContext
+            do {
+                try managedContext.save()
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            
+            //End the timer
+            userTimer.invalidate()
+            monsterTimer.invalidate()
+            
+            //need to save the data
+            
+            questOver = true
         }
-        let managedContext =
-          appDelegate.persistentContainer.viewContext
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        
-        //End the timer
-        userTimer.invalidate()
-        monsterTimer.invalidate()
-        
-        //need to save the data
-        
-        questOver = true
-    }
     }
     
 }
