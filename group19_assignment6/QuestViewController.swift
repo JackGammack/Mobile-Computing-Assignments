@@ -199,6 +199,8 @@ class QuestViewController: UIViewController{
         
         questOver = true
     }
+    }
+    
 }
     
 
