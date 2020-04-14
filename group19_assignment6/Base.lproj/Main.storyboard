@@ -300,6 +300,7 @@
                     <connections>
                         <outlet property="AttackLabel" destination="AX5-1T-nXP" id="TS7-Nu-xlN"/>
                         <outlet property="ClassLabel" destination="4ZB-ws-CAM" id="CqS-Wv-Yth"/>
+                        <outlet property="EndQuestButton" destination="ner-OF-bhx" id="FK5-J8-G6S"/>
                         <outlet property="HPLabel" destination="D8c-kd-sDz" id="kAd-zJ-mpa"/>
                         <outlet property="LevelLabel" destination="2TV-p1-3zV" id="C0S-5h-D3m"/>
                         <outlet property="NameLabel" destination="hlo-ya-yw8" id="nI0-7B-kVl"/>

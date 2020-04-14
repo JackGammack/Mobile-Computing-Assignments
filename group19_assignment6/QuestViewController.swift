@@ -25,6 +25,20 @@ class QuestViewController: UIViewController{
     
     var questOver: Bool = false
     var randomRange: Float = 0;
+    let monsternames = [
+        "Thanos",
+        "Venom",
+        "Ultron"
+        
+    ]
+    struct Monster{
+        var name:String
+        var atk:Float
+        var monsterHP: Int64
+    }
+    var currMonster: Monster = Monster(name: "Ultron", atk:3, monsterHP: 30)
+    var userTimer = Timer()
+    var monsterTimer = Timer()
     
 
     override func viewDidLoad() {
@@ -35,6 +49,7 @@ class QuestViewController: UIViewController{
         lvl = character!.value(forKeyPath: "level") as! Int16
         atk = character!.value(forKeyPath: "attack") as! Float
         currHP = character!.value(forKeyPath: "currentHP") as! Float
+       
         
         
         NameLabel?.text = character!.value(forKeyPath: "name") as! String
@@ -46,8 +61,11 @@ class QuestViewController: UIViewController{
         //The portrait value is a String that is the name of the image
         //For example "comic" or "bumblebee"
         PortraitImage?.image = UIImage(named: character!.value(forKeyPath: "portrait") as! String)
+        QuestLog.text += "Beginning Quest...\n"
         
-        runQuest()
+        userTimer = Timer.scheduledTimer(timeInterval:1.5, target:self, selector:#selector(userAtk), userInfo:nil,repeats: true)
+        monsterTimer = Timer.scheduledTimer(timeInterval: 2, target:self, selector:#selector(monsterAtk), userInfo:nil,repeats: true)
+        
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -67,8 +85,53 @@ class QuestViewController: UIViewController{
         print("Could not fetch. \(error), \(error.userInfo)")
       }
     }
-    //MARK: - QuestLog function
     
+    //MARK: - User Attack
+    @objc func userAtk(){
+        var monstersDefeated = 0;
+        randomRange = Float.random(in: 1..<8)
+        let atkPoints = atk*randomRange
+        QuestLog.text += "\(name) attacks for \(Int(atkPoints)) damage\n"
+        var monsterHP = Float.random(in: 20 ..< 50)
+        monsterHP -= atkPoints
+        if monsterHP <= 0 {
+            QuestLog.text += "\(currMonster.name) is defeated!\n"
+            monstersDefeated += 1
+                               print(monstersDefeated)
+                               if( monstersDefeated >= 5 ){
+                                   QuestLog.text += "Level up!\n"
+                                   lvl += 1
+                                   LevelLabel?.text = String(lvl)
+                                   monstersDefeated = 0;
+                                   character!.setValue(lvl, forKeyPath: "level")
+                               }
+            currMonster = Monster(
+                name: monsternames[Int.random(in: 0 ..< monsternames.count)],
+                atk : Float.random(in: 2 ..< 5),
+                monsterHP :Int64(Float.random(in: 20 ..< 50)) )
+            
+
+                           }
+        QuestLog.text += "\(currMonster.name) enemy appears!\n"
+        
+        }
+      
+        
+    //MARK: -<onster Attack
+    @objc func monsterAtk(){
+        let matkPoints = Float.random(in: 5..<15)
+                      currHP -= matkPoints
+                      QuestLog.text += "\(currMonster.name) attacks for \(Int(matkPoints)) damage\n"
+                      if( currHP <= 0 ){
+                          currHP = 0
+                          QuestLog.text += "\(name) is defeated!\n"
+                          questOver = true
+                      }
+                      HPLabel?.text = String(format: "%.0f", currHP) + "/" + String(character!.value(forKeyPath: "totalHP") as! Int)
+        QuestLog.text += "\(currMonster.name) is waiting..."
+        
+}
+    /*
     func runQuest(){
         var monstersDefeated = 0;
         QuestLog.text += "Beginning Quest...\n"
@@ -115,8 +178,25 @@ class QuestViewController: UIViewController{
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
+ */
     
     @IBAction func EndQuestButton(_ sender: Any) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+          return
+        }
+        let managedContext =
+          appDelegate.persistentContainer.viewContext
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        
+        //End the timer
+        userTimer.invalidate()
+        monsterTimer.invalidate()
+        
+        //need to save the data
+        
         questOver = true
     }
 }
