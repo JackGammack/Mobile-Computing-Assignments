@@ -129,8 +129,10 @@ class QuestViewController: UIViewController{
                           userTimer.invalidate()
                           monsterTimer.invalidate()
                       }
+                      else{
                       HPLabel?.text = String(format: "%.0f", currHP) + "/" + String(character!.value(forKeyPath: "totalHP") as! Int)
         QuestLog.text += "\(currMonster.name) is waiting..."
+        }
         
 }
     /*
